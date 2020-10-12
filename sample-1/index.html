@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【sample】headerを三角形にしてみる</title>
+    <link rel="stylesheet" href="ress.min.css">
+</head>
+
+<body>
+
+    <div class="square">
+
+        <h1><img src="images/logo_white.png" alt="強くて大きくて格好良い！"></h1>
+
+    </div>
+    <div class="triangle"></div>
+
+    <style>
+        .square {
+            width: 100%;
+            height: 48px;
+            background: #000;
+            text-align: center;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-right: 50vw solid transparent;
+            border-left: 50vw solid transparent;
+            border-top: 20px solid #000;
+        }
+    </style>
+
+</body>
+
+</html>
