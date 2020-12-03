@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>色相ループ</title>
+</head>
+
+<body>
+    <script>
+
+        let _r = 255;
+        let _g = 100;
+        let _b = 100;
+
+        function changeColor() {
+            let _color = 'rgb(' + _r + ',' + _g + ',' + _b + ')';
+            document.body.style.backgroundColor = _color;
+        }
+
+        function countdownB() {
+            _b--;
+            changeColor();
+            let _timer = setTimeout(countdownB, 10);
+            if (_b < 101) {
+                clearTimeout(_timer);
+                countupG();
+                console.log('f');
+            };
+        }
+        function countupR() {
+            _r++;
+            changeColor();
+            let _timer = setTimeout(countupR, 10);
+            if (_r > 255) {
+                clearTimeout(_timer);
+                countdownB();
+                console.log('e');
+            };
+        }
+        function countdownG() {
+            _g--;
+            changeColor();
+            let _timer = setTimeout(countdownG, 10);
+            if (_g < 101) {
+                clearTimeout(_timer);
+                countupR();
+                console.log('d');
+            };
+        }
+        function countupB() {
+            _b++;
+            changeColor();
+            let _timer = setTimeout(countupB, 10);
+            if (_b > 255) {
+                clearTimeout(_timer);
+                countdownG();
+                console.log('c');
+            };
+        }
+        function countdownR() {
+            _r--;
+            changeColor();
+            let _timer = setTimeout(countdownR, 10);
+            if (_r < 101) {
+                clearTimeout(_timer);
+                countupB();
+                console.log('b');
+            };
+        }
+
+        function countupG() {
+            _g++;
+            changeColor();
+            let _timer = setTimeout(countupG, 10);
+            if (_g > 255) {
+                clearTimeout(_timer);
+                countdownR();
+                console.log('a');
+            };
+        }
+
+        countupG();
+
+    </script>
+</body>
+
+</html>
