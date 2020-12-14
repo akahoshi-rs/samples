@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ツールバーの開閉</title>
+    <link rel="stylesheet" href="css/ress.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>ツールバーの開閉</h1>
+        <p><small>&copy; 2020 akahoshi</small></p>
+    </header>
+    <main>
+        <div class="wrapper">
+            <div class="contents">
+            </div>
+            <div class="NavTools">
+                <div class="tools">
+                    <div class="edit" style="display: block;">
+                        <p>first</p>
+                    </div>
+                    <div class="save" style="display: none;">
+                        <p>second</p>
+                    </div>
+                    <div class="help" style="display: none;">
+                        <p>third</p>
+                    </div>
+                    <div class="issue" style="display: none;">
+                        <p>fourth</p>
+                    </div>
+                    <div class="list" style="display: none;">
+                        <p>fifth</p>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <nav>
+                        <ul>
+                            <li data-open="open" id="btn-edit" class="open" title="Edit"><img src="images/edit.svg"
+                                    alt="編集"></li>
+                            <li data-open="close" id="btn-save" class="open" title="save"><img src="images/save.svg"
+                                    alt="保存"></li>
+                            <li data-open="close" id="btn-help" class="open" title="help"><img src="images/help.svg"
+                                    alt="ヘルプ"></li>
+                            <li data-open="close" id="btn-issue" class="open" title="issue"><img src="images/issue.svg"
+                                    alt="不具合報告">
+                            </li>
+                            <li data-open="close" id="btn-list" class="open" title="list"><img src="images/List1.svg"
+                                    alt="単語リスト">
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--NavTools-->
+        </div>
+        <!--wrapper-->
+    </main>
+
+
+
+    <script src="BtnOpen.js"></script>
+    <script src="PushList.js"></script>
+    <script>
+        ////////////////////////////////////////////
+
+    </script>
+</body>
+
+</html>

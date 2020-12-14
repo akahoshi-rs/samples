@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* header
+--------------------- */
+
+header {
+    height: 40px;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ddffff;
+}
+
+/* wrapper
+----------------------------- */
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: calc(100vh - 40px);
+}
+
+.NavTools {
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 3;
+
+}
+
+/* nav
+---------------------------- */
+
+nav {
+    width: 60px;
+    background-color: #bbffff;
+    height: 100%;
+}
+
+nav li {
+    padding: 14px;
+}
+
+nav li img {
+    width: 30px;
+}
+
+
+/* tools
+------------------------------ */
+.tools {
+    background-color: #99ffff;
+    height: 100%;
+    width: 280px;
+    padding: 20px;
+}
