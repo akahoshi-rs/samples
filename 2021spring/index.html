@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            position: relative;
+        }
+
+        .flower {
+            /* 絶対位置に配置 */
+            position: absolute;
+            z-index: 1000;
+            transform: translateZ(1000px);
+            /* imgのサイズ */
+            height: 42px;
+            width: 42px;
+            /* 画面外に設置します */
+            top: -60px;
+            left: -60px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img class="flower" src="SVG/Big_Light.svg" alt="">
+    <img class="flower" src="SVG/Big_Dark.svg" alt="">
+    <img class="flower" src="SVG/MIddle_Light.svg" alt="">
+    <img class="flower" src="SVG/Middle_Dark.svg" alt="">
+    <img class="flower" src="SVG/Small_Light.svg" alt="">
+    <img class="flower" src="SVG/Small_Dark.svg" alt="">
+    <img class="flower" style="width: 30px;" src="SVG/Small_Light.svg" alt="">
+    <img class="flower" style="width: 30px;" src="SVG/Small_Dark.svg" alt="">
+    <img class="flower" style="width: 20px;" src="SVG/Small_Light.svg" alt="">
+    <img class="flower" style="width: 20px;" src="SVG/Small_Dark.svg" alt="">
+    <!-- 一部サイズを直接指定しています -->
+
+</body>
+
+<script>
+
+    window.onload = function () {
+        let item_parts = document.getElementsByClassName('flower');
+        for (let i = 0; i < item_parts.length; i++) {
+            item_parts[i].style.display = "none";
+            //CSSで画面外に設置していますが念のため隠します
+        };
+
+        let itemX;
+        let itemY;
+
+        document.body.addEventListener('click', function (e) {
+
+            for (let i = 0; i < item_parts.length; i++) {
+                item_parts[i].style.display = "initial";
+                let randomPOX = Math.floor(Math.random() * (100) - 50);
+                let randomPOY = Math.floor(Math.random() * (80) - 40);
+                //初期位置に追加する乱数
+
+                itemX = (e.clientX + randomPOX);
+                itemY = (e.clientY + randomPOY);
+                //クリック位置に乱数を追加し、初期位置を散らします。
+
+                item_parts[i].style.left = itemX + 'px';
+                item_parts[i].style.top = itemY + 'px';
+                //スタイルに反映
+
+                let timing_out = Math.floor(Math.random() * (1000) + 700);
+                //移送速度、フェードアウトをバラバラにさせるための乱数
+
+                //クリック座標と初期位置を比較して、座標より外側に拡散させます。
+                if ((itemX - 20) <= e.pageX && (itemY - 20) <= e.pageY) {
+                    //imgのサイズの半分を座標から引き、中央に来るよう調整します。
+                    let falling_left = Math.floor(Math.random() * (0) - 80);
+                    //左右に拡散させる乱数
+                    let spacer_top = Math.floor(Math.random() * (0) - 80);
+                    //上下に拡散させる乱数
+                    item_parts[i].animate([
+                        { top: itemY + 'px' },
+                        { top: (itemY + falling_left) + 'px' }
+                    ], {
+                        duration: timing_out
+                    });
+                    item_parts[i].animate([
+                        { left: itemX + 'px' },
+                        { left: (itemX + spacer_top) + 'px' }
+                    ], {
+                        duration: timing_out
+                    });
+                } else if ((itemX - 20) <= e.pageX && (itemY - 20) >= e.pageY) {
+                    let falling_left = Math.floor(Math.random() * (80) - 0);
+                    let spacer_top = Math.floor(Math.random() * (0) - 80);
+                    item_parts[i].animate([
+                        { top: itemY + 'px' },
+                        { top: (itemY + falling_left) + 'px' }
+                    ], {
+                        duration: timing_out
+                    });
+                    item_parts[i].animate([
+                        { left: itemX + 'px' },
+                        { left: (itemX + spacer_top) + 'px' }
+                    ], {
+                        duration: timing_out
+                    });
+                } else if ((itemX - 20) >= e.pageX && (itemY - 20) <= e.pageY) {
+                    let falling_left = Math.floor(Math.random() * (0) - 80);
+                    let spacer_bottom = Math.floor(Math.random() * (80) - 0);
+                    item_parts[i].animate([
+                        { top: itemY + 'px' },
+                        { top: (itemY + falling_left) + 'px' }
+                    ], {
+                        duration: timing_out
+                    });
+                    item_parts[i].animate([
+                        { left: itemX + 'px' },
+                        { left: (itemX + spacer_bottom) + 'px' }
+                    ], {
+                        duration: timing_out
+                    });
+                } else if ((itemX - 20) >= e.pageX && (itemY - 20) >= e.pageY) {
+                    let falling_right = Math.floor(Math.random() * (80) - 0);
+                    let spacer_bottom = Math.floor(Math.random() * (80) - 0);
+                    item_parts[i].animate([
+                        { top: itemY + 'px' },
+                        { top: (itemY + falling_right) + 'px' }
+                    ], {
+                        duration: timing_out
+                    });
+                    item_parts[i].animate([
+                        { left: itemX + 'px' },
+                        { left: (itemX + spacer_bottom) + 'px' }
+                    ], {
+                        duration: timing_out
+                    });
+                }
+
+                item_parts[i].animate({
+                    opacity: [0, 1],
+                    duration: 2000,
+                }, {
+                    direction: 'reverse',
+                    duration: timing_out,
+                    fill: 'forwards'
+                });
+            };
+
+        });
+
+    };
+
+</script>
+
+</html>
