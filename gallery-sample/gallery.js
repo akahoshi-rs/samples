@@ -34,19 +34,25 @@ class Modal {
         this.modal_height = options.modal_height || '500px';
         this.flex_height = options.flex_height || '100px';
         this.BGColor = options.BGColor || '#aaa';
+        this.title_flag = options.title || 'on';
+        this.caption_flag = options.caption || 'on';
 
         let wrapper = document.querySelector(this.area);
         let container = document.createElement('div');
         container.classList.add('graphics');
         let title = document.createElement('p');
-        title.style.margin = '20px';
-        title.style.fontWeight = 'bold';
-        title.textContent = this.data[0].title;
-        title.classList.add('graph_title');
+        if (this.title_flag == 'on') {
+            title.style.margin = '20px';
+            title.style.fontWeight = 'bold';
+            title.textContent = this.data[0].title;
+            title.classList.add('graph_title');
+        }
         let caption = document.createElement('p');
-        caption.style.margin = '20px';
-        caption.textContent = this.data[0].caption;
-        caption.classList.add('graph_caption');
+        if (this.caption_flag == 'on') {
+            caption.style.margin = '20px';
+            caption.textContent = this.data[0].caption;
+            caption.classList.add('graph_caption');
+        }
         let modal = document.createElement('div');
         modal.classList.add('modal');
         let p_img = document.createElement('p');
@@ -99,9 +105,13 @@ class Modal {
             flex_modal.appendChild(flex_p);
         }
 
-        container.appendChild(title);
+        if (this.title_flag == 'on') {
+            container.appendChild(title);
+        }
         container.appendChild(modal);
-        container.appendChild(caption);// ←タイトルのみの場合は削除
+        if (this.caption_flag == 'on') {
+            container.appendChild(caption);
+        }
         container.appendChild(flex_modal);
         wrapper.appendChild(container);
     }//constructor
@@ -113,4 +123,6 @@ new Modal({
     modal_height: '500px',//大きい表示の画像の大きさ
     flex_height: '100px',//小さい表示の画像の大きさ
     BGColor: '#aaa',//大きい表示の画像の背景の色
+    title: 'on',//タイトルの表示
+    caption: 'on',//キャプションの表示
 });
